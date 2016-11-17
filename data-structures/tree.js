@@ -2,8 +2,7 @@ var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
   newTree.parent = null;
-  // your code here
-  newTree.children = [];  // fix me
+  newTree.children = [];
   _.extend(newTree, treeMethods);
   return newTree;
 };
@@ -39,8 +38,16 @@ treeMethods.removeFromParent = function(target){
 treeMethods.traverse = function(cb){
   cb(this.value);
   this.children.forEach(val => val.traverse(cb))
-}
+};
 
+treeMethods.depthFirstSearch = function(){};
+
+treeMethods.breadthFirstSearch = function(){};
+
+treeMethods.countLeaves = function(){
+  return this.children.length === 0 ? 1
+    : this.children.reduce((total, child) => total + child.countLeaves(), 0);
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */

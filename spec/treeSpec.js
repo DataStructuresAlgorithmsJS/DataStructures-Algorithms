@@ -1,5 +1,6 @@
 describe('tree', function() {
   var tree;
+  var should = chai.should();
 
   beforeEach(function() {
     tree = Tree();
@@ -11,6 +12,18 @@ describe('tree', function() {
     expect(tree.hasOwnProperty('value')).to.equal(true);
   });
 
+  it('should have a method named depthFirstSearch', function(){
+    expect(tree.depthFirstSearch).to.be.a('function');
+  });
+
+  it('should have a method named breadthFirstSearch', function(){
+    expect(tree.breadthFirstSearch).to.be.a('function');
+  })
+
+  it('should have a method named countLeaves', function(){
+    expect(tree.countLeaves).to.be.a('function');
+  })
+
   it('should have a method named "removeFromParent" and a property named "parent"', function() {
     expect(tree.addChild).to.be.a("function");
     expect(tree.hasOwnProperty("parent")).to.equal(true);
@@ -19,7 +32,7 @@ describe('tree', function() {
   it('should have a method named "traverse"', function(){
     expect(tree.traverse).to.be.a('function');
   });
-  
+
   it('should add children to the tree', function() {
     tree.addChild(5);
     expect(tree.children[0].value).to.equal(5);
@@ -91,4 +104,30 @@ describe('tree', function() {
     expect(results[3]).to.equal(4);
     expect(results[4]).to.equal(2);
   });
+
+  it('should return 1 when a tree root has 0 children', function() {
+    var root = Tree();
+    expect(root.countLeaves()).to.equal(1);
+  });
+
+  it('should return 2 when the root has two children', function() {
+    var root = Tree();
+    var numberOfBranches;
+    root.addChild(Tree());
+    root.addChild(Tree());
+    numberOfBranches = root.countLeaves();
+    expect(numberOfBranches).to.equal(2);
+  });
+
+  it('should still return 2 when 1 branch has 1 leaf', function() {
+    var root = Tree();
+    var numberOfBranches;
+    root.addChild(Tree());
+    var branch = Tree();
+    root.addChild(branch);
+    branch.addChild(Tree());
+    numberOfBranches = root.countLeaves();
+    expect(numberOfBranches).to.equal(2);
+  });
+
 });
