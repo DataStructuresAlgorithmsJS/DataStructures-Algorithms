@@ -134,7 +134,7 @@ describe('tree', function() {
     expect(numberOfBranches).to.equal(2);
   });
 
-  it('should return all nodes in a tree in Depth First Search Order', function() {
+  it('should "depthFirstSearch" return all nodes in a tree in Depth First Search Order', function() {
     var passAll = () => true;
     var root = Tree(1);
     // depth: 1
@@ -165,7 +165,7 @@ describe('tree', function() {
     result.should.deep.equal(test);
   });
 
-  it('should return all nodes in a BIG tree in Depth First Search Order', function() {
+  it('should "depthFirstSearch" return all nodes in a BIG tree in Depth First Search Order', function() {
     var passAll = () => true;
     var root = Tree(1);
     // depth: 1
@@ -211,7 +211,83 @@ describe('tree', function() {
     result.should.deep.equal(test);
   });
 
+  it('should "breadthFirstSearch" return all nodes in a tree in Breadth First Search Order', function() {
+    var passAll = () => true;
+    var root = Tree(1);
+    // depth: 1
+    root.addChild(2);
+    root.addChild(3);
+    // depth: 2
+    root.children[0].addChild(4);
+    root.children[0].addChild(5);
+    root.children[1].addChild(6);
+    root.children[1].addChild(7);
+    // depth: 3
+    root.children[0].children[0].addChild(8);
+    root.children[1].children[1].addChild(9);
+    root.children[1].children[1].addChild(10);
+    // depth: 4
+    root.children[1].children[1].children[1].addChild(11);
+    var test = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ];
+    //             1
+    //        2    -    3
+    //     4  -  5   6  -  7
+    //   8 -            9  -  10
+    //                      11 -
+    //
+    //
+    // we should expect back all the nodes we added
+    var result = root.breadthFirstSearch(passAll);
+    result.should.have.length(test.length);
+    result.should.deep.equal(test);
+  });
 
+  it('should "breadthFirstSearch" return all nodes in a BIG tree in Breadth First Search Order', function() {
+    var passAll = () => true;
+    var root = Tree(1);
+    // depth: 1
+    root.addChild(2);
+    root.addChild(3);
+    root.addChild(4);
+    root.addChild(5);
+    root.addChild(6);
+    // depth: 2
+    root.children[0].addChild(7);
+    root.children[0].addChild(8);
+    root.children[1].addChild(9);
+    root.children[1].addChild(10);
+    root.children[2].addChild(11);
+    root.children[2].addChild(12);
+    root.children[3].addChild(13);
+    root.children[3].addChild(14);
+    root.children[4].addChild(15);
+    root.children[4].addChild(16);
+    // depth: 3
+    root.children[0].children[0].addChild(17);
+    root.children[0].children[0].addChild(18);
+    root.children[0].children[1].addChild(19);
+    root.children[0].children[1].addChild(20);
+    root.children[1].children[1].addChild(21);
+    root.children[1].children[1].addChild(22);
+    root.children[2].children[0].addChild(23);
+    root.children[2].children[1].addChild(24);
+    root.children[3].children[1].addChild(25);
+    root.children[4].children[1].addChild(26);
+
+    var result = [...Array(26)].map((_,i)=> i + 1);
+    //[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15,16,17,18,19,20,21, 22,23,24,25,26 ];
+    //                                          1
+    //            2        -        3         -          4       -      5        -      6
+    //      7     -     8       9   -   10          11   -   12    13   -   14     15  -   16
+    //  17  -  18   19  -  20       21  -  22    23 -      24 -           25 -           26 -
+    //
+    //
+    //
+    // we should expect back all the nodes we added
+    var test = root.breadthFirstSearch(passAll);
+    result.should.have.length(result.length);
+    result.should.deep.equal(test);
+  });
 
 
 });

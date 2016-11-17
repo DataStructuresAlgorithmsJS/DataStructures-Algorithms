@@ -47,7 +47,16 @@ treeMethods.depthFirstSearch = function(filter, depth){
   );
 };
 
-treeMethods.breadthFirstSearch = function(){};
+treeMethods.breadthFirstSearch = function(filter){
+  var queue = [[this,0]], lostAndFound = [];
+    while (queue.length) {
+      var cur = queue.shift();
+      if(filter(cur[0].value,cur[1]))
+        lostAndFound.push(cur[0].value);
+      cur[0].children.map(node=> queue.push([node, cur[1]+ 1]));
+    }
+    return lostAndFound;
+};
 
 treeMethods.countLeaves = function(){
   return this.children.length === 0 ? 1
