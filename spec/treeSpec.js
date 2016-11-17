@@ -24,6 +24,10 @@ describe('tree', function() {
     expect(tree.countLeaves).to.be.a('function');
   })
 
+  it('should have a method named map', function(){
+      expect(tree.map).to.be.a('function');
+  });
+
   it('should have a method named "removeFromParent" and a property named "parent"', function() {
     expect(tree.addChild).to.be.a("function");
     expect(tree.hasOwnProperty("parent")).to.equal(true);
@@ -91,18 +95,18 @@ describe('tree', function() {
   });
 
   it('It should accept a callback and execute it on every value contained in the tree', function() {
+    tree.addChild(3);
     tree.addChild(1);
-    tree.addChild(2);
-    tree.children[0].addChild(3);
-    tree.children[0].addChild(4);
+    tree.children[0].addChild(7);
+    tree.children[0].addChild(9);
     var results = [];
-    var print = function(item){results.push(item)};
+    var print = item => results.push(item);
     tree.traverse(print);
     expect(results.length).to.equal(5);
-    expect(results[1]).to.equal(1);
-    expect(results[2]).to.equal(3);
-    expect(results[3]).to.equal(4);
-    expect(results[4]).to.equal(2);
+    expect(results[1]).to.equal(3);
+    expect(results[2]).to.equal(7);
+    expect(results[3]).to.equal(9);
+    expect(results[4]).to.equal(1);
   });
 
   it('should return 1 when a tree root has 0 children', function() {
@@ -129,5 +133,85 @@ describe('tree', function() {
     numberOfBranches = root.countLeaves();
     expect(numberOfBranches).to.equal(2);
   });
+
+  it('should return all nodes in a tree in Depth First Search Order', function() {
+    var passAll = () => true;
+    var root = Tree(1);
+    // depth: 1
+    root.addChild(2);
+    root.addChild(3);
+    // depth: 2
+    root.children[0].addChild(4);
+    root.children[0].addChild(5);
+    root.children[1].addChild(6);
+    root.children[1].addChild(7);
+    // depth: 3
+    root.children[0].children[0].addChild(8);
+    root.children[1].children[1].addChild(9);
+    root.children[1].children[1].addChild(10);
+    // depth: 4
+    root.children[1].children[1].children[1].addChild(11);
+    var test = [1, 2, 4, 8, 5, 3, 6, 7, 9, 10, 11];
+    //             1
+    //        2    -    3
+    //     4  -  5   6  -  7
+    //   8 -            9  -  10
+    //                      11 -
+    //
+    //
+    // we should expect back all the nodes we added
+    var result = root.depthFirstSearch(passAll);
+    result.should.have.length(test.length);
+    result.should.deep.equal(test);
+  });
+
+  it('should return all nodes in a BIG tree in Depth First Search Order', function() {
+    var passAll = () => true;
+    var root = Tree(1);
+    // depth: 1
+    root.addChild(2);
+    root.addChild(3);
+    root.addChild(4);
+    root.addChild(5);
+    root.addChild(6);
+    // depth: 2
+    root.children[0].addChild(7);
+    root.children[0].addChild(8);
+    root.children[1].addChild(9);
+    root.children[1].addChild(10);
+    root.children[2].addChild(11);
+    root.children[2].addChild(12);
+    root.children[3].addChild(13);
+    root.children[3].addChild(14);
+    root.children[4].addChild(15);
+    root.children[4].addChild(16);
+    // depth: 3
+    root.children[0].children[0].addChild(17);
+    root.children[0].children[0].addChild(18);
+    root.children[0].children[1].addChild(19);
+    root.children[0].children[1].addChild(20);
+    root.children[1].children[1].addChild(21);
+    root.children[1].children[1].addChild(22);
+    root.children[2].children[0].addChild(23);
+    root.children[2].children[1].addChild(24);
+    root.children[3].children[1].addChild(25);
+    root.children[4].children[1].addChild(26);
+
+    var result = [1, 2, 7, 17, 18, 8, 19, 20, 3, 9, 10, 21, 22, 4, 11, 23, 12, 24, 5, 13, 14, 25, 6, 15, 16, 26];
+    //                                          1
+    //            2        -        3         -          4       -      5        -      6
+    //      7     -     8       9   -   10          11   -   12    13   -   14     15  -   16
+    //  17  -  18   19  -  20       21  -  22    23 -      24 -           25 -           26 -
+    //
+    //
+    //
+    // we should expect back all the nodes we added
+    var test = root.depthFirstSearch(passAll);
+    result.should.have.length(result.length);
+    result.should.deep.equal(test);
+  });
+
+
+
 
 });

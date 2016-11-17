@@ -40,7 +40,12 @@ treeMethods.traverse = function(cb){
   this.children.forEach(val => val.traverse(cb))
 };
 
-treeMethods.depthFirstSearch = function(){};
+treeMethods.depthFirstSearch = function(filter, depth){
+  return this.children.reduce(
+    (result, child) => result.concat(child.depthFirstSearch(filter, depth + 1)),
+      filter(this.value, depth) ? [this.value] : []
+  );
+};
 
 treeMethods.breadthFirstSearch = function(){};
 
@@ -48,6 +53,8 @@ treeMethods.countLeaves = function(){
   return this.children.length === 0 ? 1
     : this.children.reduce((total, child) => total + child.countLeaves(), 0);
 };
+
+treeMethods.map = function(){};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
