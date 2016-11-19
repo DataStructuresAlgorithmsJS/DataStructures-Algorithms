@@ -63,7 +63,15 @@ treeMethods.countLeaves = function(){
     : this.children.reduce((total, child) => total + child.countLeaves(), 0);
 };
 
-treeMethods.map = function(){};
+treeMethods.map = function(callback){
+  var output = Tree(callback(this.value));
+  this.children.forEach(child=> output.addChild(child.map(callback)))
+  return output;
+};
+
+treeMethods.mapInPlace = function(){};
+
+treeMethods.isDescendant = function(){};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
