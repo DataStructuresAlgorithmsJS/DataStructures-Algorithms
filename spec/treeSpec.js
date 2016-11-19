@@ -28,6 +28,14 @@ describe('tree', function() {
       expect(tree.map).to.be.a('function');
   });
 
+  it('should have a method named mapInPlace', function(){
+      expect(tree.mapInPlace).to.be.a('function');
+  });
+
+  it('should have a method named isDescendant', function(){
+      expect(tree.isDescendant).to.be.a('function');
+  });
+
   it('should have a method named "removeFromParent" and a property named "parent"', function() {
     expect(tree.addChild).to.be.a("function");
     expect(tree.hasOwnProperty("parent")).to.equal(true);
@@ -288,6 +296,37 @@ describe('tree', function() {
     result.should.have.length(result.length);
     result.should.deep.equal(test);
   });
+
+  it('should return an identical tree if the mapping function is called with a callback that returns all values', function() {
+      var callbackFunc = value => value;
+      // depth: 0
+      var input = Tree(1);
+      // depth: 1
+      input.addChild(2);
+      input.addChild(3);
+      // depth: 2
+      input.children[0].addChild(4);
+      input.children[0].addChild(5);
+      input.children[1].addChild(6);
+      input.children[1].addChild(8);
+      // depth: 3 (sparse)
+      input.children[0].children[0].addChild(9);
+      input.children[1].children[1].addChild(10);
+
+      var compareTrees =  (result, expectation) => {
+        result.should.be.an.instanceOf(Tree);
+        result.value.should.equal(expectation.value);
+        result.should.not.equal(expectation);
+        result.children.should.have.length(expectation.children.length);
+        for (var i = 0; i < result.children.length; i++) {
+          compareTrees(result.children[i], expectation.children[i]);
+        }
+      }
+
+      var result = input.map(callbackFunc);
+      // the input and output trees should have identical values
+      compareTrees(result, input);
+    });
 
 
 });
