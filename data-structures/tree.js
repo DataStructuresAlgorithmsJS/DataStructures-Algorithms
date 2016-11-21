@@ -74,7 +74,18 @@ treeMethods.mapInPlace = function(callback){
   this.children.forEach(node=> node.mapInPlace(callback));
 };
 
-treeMethods.isDescendant = function(){};
+treeMethods.isDescendant = function(child){
+  if (this.children.includes(child)) {
+    return true;
+  } else {
+    for (var i of this.children) {
+      if(i.isDescendant(child)){
+        return true;
+      }
+    }
+    return false;
+  }
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
