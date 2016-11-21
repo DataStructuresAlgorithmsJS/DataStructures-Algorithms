@@ -10,10 +10,6 @@ describe('tree', function() {
     expect(tree.contains).to.be.a('function');
   });
 
-  it('should have a method named isDescendant', function(){
-      expect(tree.isDescendant).to.be.a('function');
-  });
-
   it('should return true when adding a children to the tree', function(){
     var returned = tree.addChild(5);
     expect(returned).to.equal(true);
@@ -407,4 +403,22 @@ describe('tree', function() {
       compareTrees(input, output);
     });
   });
+
+  describe('isDescendant', function(){
+
+    it('should have a method named isDescendant', function(){
+        expect(tree.isDescendant).to.be.a('function');
+    });
+
+    it('should check if a child node isDescendant of tree', function(){
+      tree.addChild(5);
+      tree.addChild(6);
+      tree.children[0].addChild(7);
+      tree.children[1].addChild(8);
+      // expect(tree.isDescendant(7)).to.equal(true);
+      expect(tree.isDescendant(8)).to.equal(true);
+    });
+    
+  });
+
 });
