@@ -69,7 +69,10 @@ treeMethods.map = function(callback){
   return output;
 };
 
-treeMethods.mapInPlace = function(){};
+treeMethods.mapInPlace = function(callback){
+  this.value = callback(this.value);
+  this.children.forEach(node=> node.mapInPlace(callback));
+};
 
 treeMethods.isDescendant = function(){};
 /*
