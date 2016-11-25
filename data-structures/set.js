@@ -18,6 +18,8 @@ setPrototype.remove = function(item) {
   delete this._storage[item];
 };
 
+// removeAll
+// retainAll
 /*
  * Complexity: What is the time complexity of the above functions?
  */
