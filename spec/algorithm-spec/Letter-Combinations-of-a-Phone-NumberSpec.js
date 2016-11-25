@@ -4,49 +4,49 @@ describe('letterCombinations', ()=>{
     expect(letterCombinations).to.be.a('function');
   });
 
-  it('should return an array', ()=>{
+  it('should return a array', ()=>{
     expect(letterCombinations('1')).to.be.a('array');
   });
 
-  it('should create combinations for an string input of "1"', ()=>{
+  it('should create all permutations for a string input of "1"', ()=>{
     expect(letterCombinations('1')).to.deep.equal(['1']);
   });
 
-  it('should create combinations for an string input of "01"', ()=>{
+  it('should create all permutations for a string input of "01"', ()=>{
     expect(letterCombinations("01")).to.deep.equal(["01"]);
   });
 
-  it('should create combinations for an string input of "123"', ()=>{
+  it('should create all permutations for a string input of "123"', ()=>{
     expect(letterCombinations("123")).to.deep.equal([ '1AD', '1AE', '1AF', '1BD', '1BE', '1BF', '1CD', '1CE', '1CF' ]);
   });
 
-  it('should create combinations for an string input of "1113"', ()=>{
+  it('should create all permutations for a string input of "1113"', ()=>{
     expect(letterCombinations("1113")).to.deep.equal(["111D", "111E", "111F"]);
   });
 
-  it('should create combinations for an string input of "1123"', ()=>{
+  it('should create all permutations for a string input of "1123"', ()=>{
     expect(letterCombinations("1123")).to.deep.equal(["11AD", "11AE", "11AF", "11BD", "11BE", "11BF", "11CD", "11CE", "11CF"]);
   });
 
-  it('should create combinations for an string input of "987"', ()=>{
+  it('should create all permutations for a string input of "987"', ()=>{
     expect(letterCombinations("987")).to.deep.equal([ 'WTP','WTQ','WTR','WTS','WUP','WUQ','WUR','WUS','WVP','WVQ','WVR', 'WVS','XTP', 'XTQ', 'XTR', 'XTS', 'XUP', 'XUQ', 'XUR', 'XUS', 'XVP', 'XVQ', 'XVR', 'XVS', 'YTP', 'YTQ', 'YTR', 'YTS', 'YUP', 'YUQ', 'YUR', 'YUS', 'YVP', 'YVQ', 'YVR', 'YVS', 'ZTP', 'ZTQ', 'ZTR', 'ZTS', 'ZUP', 'ZUQ', 'ZUR', 'ZUS', 'ZVP', 'ZVQ', 'ZVR', 'ZVS' ]);
   });
 
-  it('should create combinations for an string input of "91991"', ()=>{
+  it('should create all permutations for a string input of "91991"', ()=>{
     expect(letterCombinations("91991")).to.deep.equal([ 'W1WW1', 'W1WX1', 'W1WY1', 'W1WZ1', 'W1XW1', 'W1XX1', 'W1XY1', 'W1XZ1', 'W1YW1', 'W1YX1', 'W1YY1', 'W1YZ1', 'W1ZW1', 'W1ZX1', 'W1ZY1', 'W1ZZ1', 'X1WW1', 'X1WX1', 'X1WY1', 'X1WZ1', 'X1XW1', 'X1XX1', 'X1XY1', 'X1XZ1', 'X1YW1', 'X1YX1', 'X1YY1', 'X1YZ1', 'X1ZW1', 'X1ZX1', 'X1ZY1', 'X1ZZ1', 'Y1WW1', 'Y1WX1', 'Y1WY1', 'Y1WZ1', 'Y1XW1', 'Y1XX1', 'Y1XY1', 'Y1XZ1', 'Y1YW1', 'Y1YX1', 'Y1YY1', 'Y1YZ1', 'Y1ZW1', 'Y1ZX1', 'Y1ZY1', 'Y1ZZ1', 'Z1WW1', 'Z1WX1', 'Z1WY1', 'Z1WZ1', 'Z1XW1', 'Z1XX1', 'Z1XY1', 'Z1XZ1', 'Z1YW1', 'Z1YX1', 'Z1YY1', 'Z1YZ1', 'Z1ZW1', 'Z1ZX1', 'Z1ZY1', 'Z1ZZ1' ]);
   });
 
 
 
-  it('should create combinations for an string input of "85315"', ()=>{
+  it('should create all permutations for a string input of "85315"', ()=>{
     expect(letterCombinations("85315")).to.deep.equal([ 'TJD1J', 'TJD1K', 'TJD1L', 'TJE1J', 'TJE1K', 'TJE1L', 'TJF1J', 'TJF1K', 'TJF1L', 'TKD1J', 'TKD1K', 'TKD1L', 'TKE1J', 'TKE1K', 'TKE1L', 'TKF1J', 'TKF1K', 'TKF1L', 'TLD1J', 'TLD1K', 'TLD1L', 'TLE1J', 'TLE1K', 'TLE1L', 'TLF1J', 'TLF1K', 'TLF1L', 'UJD1J', 'UJD1K', 'UJD1L', 'UJE1J', 'UJE1K', 'UJE1L', 'UJF1J', 'UJF1K', 'UJF1L', 'UKD1J', 'UKD1K', 'UKD1L', 'UKE1J', 'UKE1K', 'UKE1L', 'UKF1J', 'UKF1K', 'UKF1L', 'ULD1J', 'ULD1K', 'ULD1L', 'ULE1J', 'ULE1K', 'ULE1L', 'ULF1J', 'ULF1K', 'ULF1L', 'VJD1J', 'VJD1K', 'VJD1L', 'VJE1J', 'VJE1K', 'VJE1L', 'VJF1J', 'VJF1K', 'VJF1L', 'VKD1J', 'VKD1K', 'VKD1L', 'VKE1J', 'VKE1K', 'VKE1L', 'VKF1J', 'VKF1K', 'VKF1L', 'VLD1J', 'VLD1K', 'VLD1L', 'VLE1J', 'VLE1K', 'VLE1L', 'VLF1J', 'VLF1K', 'VLF1L' ]);
   });
 
-  it('should create combinations for an string input of "65398"', ()=>{
+  it('should create all permutations for a string input of "65398"', ()=>{
     expect(letterCombinations("65398")).to.deep.equal([ 'MJDWT', 'MJDWU', 'MJDWV', 'MJDXT', 'MJDXU', 'MJDXV', 'MJDYT', 'MJDYU', 'MJDYV', 'MJDZT', 'MJDZU', 'MJDZV', 'MJEWT', 'MJEWU', 'MJEWV', 'MJEXT', 'MJEXU', 'MJEXV', 'MJEYT', 'MJEYU', 'MJEYV', 'MJEZT', 'MJEZU', 'MJEZV', 'MJFWT', 'MJFWU', 'MJFWV', 'MJFXT', 'MJFXU', 'MJFXV', 'MJFYT', 'MJFYU', 'MJFYV', 'MJFZT', 'MJFZU', 'MJFZV', 'MKDWT', 'MKDWU', 'MKDWV', 'MKDXT', 'MKDXU', 'MKDXV', 'MKDYT', 'MKDYU', 'MKDYV', 'MKDZT', 'MKDZU', 'MKDZV', 'MKEWT', 'MKEWU', 'MKEWV', 'MKEXT', 'MKEXU', 'MKEXV', 'MKEYT', 'MKEYU', 'MKEYV', 'MKEZT', 'MKEZU', 'MKEZV', 'MKFWT', 'MKFWU', 'MKFWV', 'MKFXT', 'MKFXU', 'MKFXV', 'MKFYT', 'MKFYU', 'MKFYV', 'MKFZT', 'MKFZU', 'MKFZV', 'MLDWT', 'MLDWU', 'MLDWV', 'MLDXT', 'MLDXU', 'MLDXV', 'MLDYT', 'MLDYU', 'MLDYV', 'MLDZT', 'MLDZU', 'MLDZV', 'MLEWT', 'MLEWU', 'MLEWV', 'MLEXT', 'MLEXU', 'MLEXV', 'MLEYT', 'MLEYU', 'MLEYV', 'MLEZT', 'MLEZU', 'MLEZV', 'MLFWT', 'MLFWU', 'MLFWV', 'MLFXT', 'MLFXU', 'MLFXV', 'MLFYT', 'MLFYU', 'MLFYV', 'MLFZT', 'MLFZU', 'MLFZV', 'NJDWT', 'NJDWU', 'NJDWV', 'NJDXT', 'NJDXU', 'NJDXV', 'NJDYT', 'NJDYU', 'NJDYV', 'NJDZT', 'NJDZU', 'NJDZV', 'NJEWT', 'NJEWU', 'NJEWV', 'NJEXT', 'NJEXU', 'NJEXV', 'NJEYT', 'NJEYU', 'NJEYV', 'NJEZT', 'NJEZU', 'NJEZV', 'NJFWT', 'NJFWU', 'NJFWV', 'NJFXT', 'NJFXU', 'NJFXV', 'NJFYT', 'NJFYU', 'NJFYV', 'NJFZT', 'NJFZU', 'NJFZV', 'NKDWT', 'NKDWU', 'NKDWV', 'NKDXT', 'NKDXU', 'NKDXV', 'NKDYT', 'NKDYU', 'NKDYV', 'NKDZT', 'NKDZU', 'NKDZV', 'NKEWT', 'NKEWU', 'NKEWV', 'NKEXT', 'NKEXU', 'NKEXV', 'NKEYT', 'NKEYU', 'NKEYV', 'NKEZT', 'NKEZU', 'NKEZV', 'NKFWT', 'NKFWU', 'NKFWV', 'NKFXT', 'NKFXU', 'NKFXV', 'NKFYT', 'NKFYU', 'NKFYV', 'NKFZT', 'NKFZU', 'NKFZV', 'NLDWT', 'NLDWU', 'NLDWV', 'NLDXT', 'NLDXU', 'NLDXV', 'NLDYT', 'NLDYU', 'NLDYV', 'NLDZT', 'NLDZU', 'NLDZV', 'NLEWT', 'NLEWU', 'NLEWV', 'NLEXT', 'NLEXU', 'NLEXV', 'NLEYT', 'NLEYU', 'NLEYV', 'NLEZT', 'NLEZU', 'NLEZV', 'NLFWT', 'NLFWU', 'NLFWV', 'NLFXT', 'NLFXU', 'NLFXV', 'NLFYT', 'NLFYU', 'NLFYV', 'NLFZT', 'NLFZU', 'NLFZV', 'OJDWT', 'OJDWU', 'OJDWV', 'OJDXT', 'OJDXU', 'OJDXV', 'OJDYT', 'OJDYU', 'OJDYV', 'OJDZT', 'OJDZU', 'OJDZV', 'OJEWT', 'OJEWU', 'OJEWV', 'OJEXT', 'OJEXU', 'OJEXV', 'OJEYT', 'OJEYU', 'OJEYV', 'OJEZT', 'OJEZU', 'OJEZV', 'OJFWT', 'OJFWU', 'OJFWV', 'OJFXT', 'OJFXU', 'OJFXV', 'OJFYT', 'OJFYU', 'OJFYV', 'OJFZT', 'OJFZU', 'OJFZV', 'OKDWT', 'OKDWU', 'OKDWV', 'OKDXT', 'OKDXU', 'OKDXV', 'OKDYT', 'OKDYU', 'OKDYV', 'OKDZT', 'OKDZU', 'OKDZV', 'OKEWT', 'OKEWU', 'OKEWV', 'OKEXT', 'OKEXU', 'OKEXV', 'OKEYT', 'OKEYU', 'OKEYV', 'OKEZT', 'OKEZU', 'OKEZV', 'OKFWT', 'OKFWU', 'OKFWV', 'OKFXT', 'OKFXU', 'OKFXV', 'OKFYT', 'OKFYU', 'OKFYV', 'OKFZT', 'OKFZU', 'OKFZV', 'OLDWT', 'OLDWU', 'OLDWV', 'OLDXT', 'OLDXU', 'OLDXV', 'OLDYT', 'OLDYU', 'OLDYV', 'OLDZT', 'OLDZU', 'OLDZV', 'OLEWT', 'OLEWU', 'OLEWV', 'OLEXT', 'OLEXU', 'OLEXV', 'OLEYT', 'OLEYU', 'OLEYV', 'OLEZT', 'OLEZU', 'OLEZV', 'OLFWT', 'OLFWU', 'OLFWV', 'OLFXT', 'OLFXU', 'OLFXV', 'OLFYT', 'OLFYU', 'OLFYV', 'OLFZT', 'OLFZU', 'OLFZV' ]);
   });
 
-  it('should create combinations for an string input of "69843567"', ()=>{
+  it('should create all permutations for a string input of "69843567"', ()=>{
     expect(letterCombinations("69843567")).to.deep.equal([
   'MWTGDJMP',
   'MWTGDJMQ',
