@@ -36,6 +36,7 @@ function createLPSArray(pattern) {
   var j = 0;
   // if there is no match keep track of which index to go to
   var index = 1;
+
   // loop through the pattern
   for(var i = 1; i < pattern.length;) {
     // keep track of chars
@@ -51,12 +52,7 @@ function createLPSArray(pattern) {
       index = i
     // set the index to i
     }  else {
-      // if the chars don't match
-      // looking at the lpsArray the index is set to the previous elements lpsNumber of the current element
-      index = lpsArray[index - 1]
-      // we move the lagging pointer to that index
-      j = index
-      if(j === 0){
+      if(j === 0 && charAtj !== charAtI){
       // if we reach the beginning where j is 0, we push zero
        lpsArray.push(0)
       // increment i to continue the for loop
@@ -64,56 +60,64 @@ function createLPSArray(pattern) {
       // set the new index
        index = i
       }
+      // if the chars don't match
+      // looking at the lpsArray the index is set to the previous elements lpsNumber of the current element
+      index = lpsArray[index - 1]
+      // we move the lagging pointer to that index
+      j = index
     }
     // note that this else statement somewhat acts like a while loop where we don't know when j will become 0
     // but j will keep changing with the index until it reaches to 0.
   }
   return lpsArray;
 }
-
-// example here to help visualize when working through
-//string - abcdabdcabcdabc
-//pattern-('a b c d a b c'))
-//lpsArray-[0,0,0,0,1,2,3]
+/*
+  using 3 pointers to keep track of the string position, pattern position, and the starting index
+  on the first match of the string. 
+*/
 function KMP(string, pattern) {
-  // lps array tells us where to look if the current letter does not match the current pattern char
+  var stringIndex = 0;
+  var patternIndex = 0;
+  var startingIndex = -1;
   var lpsArray = createLPSArray(pattern)
-  // keep track of current index at the pattern
-  var patternIndex = 0
-  // keep track of the index we want to return if the value is found
-  var startingIndex = 0;
-  // keep track of the counts of matching characters
-  var count = 0;
-
-  // loop through the string 
-  for(var i = 0; i < string.length;) {
-    var charAtStringI = string.charAt(i)
-    var charAtPatternI = pattern.charAt(patternIndex)
-
-    if(charAtStringI === charAtPatternI) {
-      // this only changes if starting index is null 
-      startingIndex = startingIndex || startingIndex === 0 ? startingIndex : i 
-      i++
-      count++
-      patternIndex++
-    } else {
-      // if there is no match we set startingIndex to null
-      startingIndex = null
-      // we need a ternary operator so any patternIndex that goes -1 defaults to 0
-      patternIndex =  (patternIndex - 1) < 0 ? lpsArray[0] : lpsArray[patternIndex - 1]
-      // reset the count if no match
-      count = 0
-      // if the patternIndex reaches 0 we can start the loop again
+  // edge cases
+  if(string === pattern || pattern === '') {
+    return 0
+  } else if (pattern.length >  string.length){
+    return -1
+  }
+  // loop through strings
+  while(stringIndex < string.length) {
+    var charAtStringIndex = string.charAt(stringIndex)
+    var charAtPatternIndex = pattern.charAt(patternIndex)
+    // if the current characters match
+    if(charAtStringIndex === charAtPatternIndex) {
+      // only start the starting index on the first match
       if(patternIndex === 0){
-        i++
+        startingIndex = stringIndex 
       }
-    }
-    // if the count and pattern.length the string contains the pattern
-    if(count === pattern.length){
-      return startingIndex
+      // if the the pattern is fully matched return the starting index
+      if(patternIndex >= pattern.length - 1 && startingIndex !== -1){
+        return startingIndex
+      }
+      // increment both string and pattern pointers
+      stringIndex++
+      patternIndex++
+      // if we have a match previously we don't want to restart the starting index but adjust it
+    } else if(patternIndex > 0) {
+      // look at the lps array and find the next pointer
+      patternIndex = lpsArray[patternIndex - 1]
+      // subtract from the starting index how much we have to go back
+      startingIndex = stringIndex - patternIndex
+      // if we reach back to the beginning of the pattern
+      // and there is no match on the string and pattern pointer
+    } else if(patternIndex === 0 && charAtStringIndex !== charAtPatternIndex) {
+      // increment the string pointer and restart the starting index
+      stringIndex++
+      startingIndex = -1
     }
   }
-  // if we reach this point there is no match
+  // if we reach here we did not find a match
   return -1
-
 }
+
