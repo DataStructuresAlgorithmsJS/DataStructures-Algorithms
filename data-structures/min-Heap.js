@@ -4,7 +4,7 @@ class MinHeap {
     this._compare = (i, j) => i < j;
     this._comparison = (a, b) => this._heap[a] < this._heap[b];
   }
-
+ 
   getRoot() {
     return this._heap[0];
   }
