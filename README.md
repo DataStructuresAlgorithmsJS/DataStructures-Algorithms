@@ -7,13 +7,14 @@ Various Data Structures and Algorithms implemented through the Test Driven Devel
 
 - Stack
 - Queue
-- HashTable
-- LinkedList
-- DoublyLinkedList
+- Hash Table
+- Linked List
+- Doubly Linked List
 - Tree
-- BinarySearchTree
+- Binary Search Tree
 - Graph
 - Set
+- Min Binary Heap
 
 ### Testing
 
