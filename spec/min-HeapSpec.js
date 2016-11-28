@@ -1,5 +1,3 @@
-let should = chai.should()
-
 describe('MinHeap',  () => {
 
   it('MinHeap should be a function', () => {
@@ -46,23 +44,6 @@ describe('MinHeap',  () => {
       expect(miniHeap.getRoot()).to.equal(5);
       expect(miniHeap._heap[1]).to.equal(15);
       expect(miniHeap._heap[2]).to.equal(70);
-    });
-
-    it('should maintain sorting based on MinHeap._compare between a parent node and its children', () => {
-      let miniHeap = new MinHeap();
-      miniHeap.insert(4);
-      miniHeap.insert(5);
-      miniHeap.insert(9);
-      miniHeap.insert(8);
-      miniHeap.insert(1);
-
-      let compare = miniHeap._compare;
-      let heap = miniHeap._heap;
-
-      compare(heap[0], heap[1]).should.be.true;
-      compare(heap[0], heap[2]).should.be.true;
-      compare(heap[1], heap[3]).should.be.true;
-      compare(heap[1], heap[4]).should.be.true;
     });
 
   });

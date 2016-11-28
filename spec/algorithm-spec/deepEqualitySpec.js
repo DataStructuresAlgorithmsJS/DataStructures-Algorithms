@@ -1,5 +1,3 @@
-const should = chai.should();
-
 describe('deepEquals', ()=>{
 
   it('deepEquals should exist', ()=>{
