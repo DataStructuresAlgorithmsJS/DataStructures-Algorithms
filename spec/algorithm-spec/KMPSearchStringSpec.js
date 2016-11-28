@@ -1,5 +1,3 @@
-const should = chai.should();
-
 describe('KMPSearchString', ()=>{
   describe('createLPSArray', ()=>{
 
@@ -28,12 +26,12 @@ describe('KMPSearchString', ()=>{
     });
 
     it('should track non-consectuive longest prefix-suffix', ()=>{
-      expect(createLPSArray('ababcaabc')).to.deep.equal([0,0,1,2,0,1,1,2,0])    
+      expect(createLPSArray('ababcaabc')).to.deep.equal([0,0,1,2,0,1,1,2,0])
       expect(createLPSArray('abcabdabc')).to.deep.equal([0,0,0,1,2,0,1,2,3]);
       expect(createLPSArray('abcdabca')).to.deep.equal([0,0,0,0,1,2,3,1])
       expect(createLPSArray('abcaby')).to.deep.equal([0,0,0,1,2,0]);
-      expect(createLPSArray('acacabacacabacacac')).to.deep.equal([0,0,1,2,3,0,1,2,3,4,5,6,7,8,9,10,11,4])    
-      expect(createLPSArray('issip')).to.deep.equal([0,0,0,1,0])    
+      expect(createLPSArray('acacabacacabacacac')).to.deep.equal([0,0,1,2,3,0,1,2,3,4,5,6,7,8,9,10,11,4])
+      expect(createLPSArray('issip')).to.deep.equal([0,0,0,1,0])
     });
 
   });
@@ -76,7 +74,7 @@ describe('KMPSearchString', ()=>{
     it('should return -1 if string is shorter than pattern', ()=>{
       expect(KMP('aaa', 'aaaa')).to.deep.equal(-1);
     });
-    
+
   });
 
 });
