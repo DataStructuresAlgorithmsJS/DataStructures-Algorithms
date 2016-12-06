@@ -23,3 +23,9 @@ const wordSearch = (array, word) => {
   }
   return false;
 }
+// const testData = [
+//   ['A','B','C','E'],
+//   ['S','F','C','S'],
+//   ['A','D','E','E']
+// ];
+// console.log(wordSearch(testData, 'A'))
