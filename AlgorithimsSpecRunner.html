@@ -1,43 +1,48 @@
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Mocha Tests</title>
-    <link rel="stylesheet" href="./lib/mocha/mocha.css" />
-    <script src="./lib/jquery/jquery.js"></script>
-    <script src="./lib/mocha/mocha.js"></script>
-    <script src="./lib/chai/chai.js"></script>
-    <script src="./lib/underscore/underscore.js"></script>
-    <script>
-      mocha.setup('bdd');
-      window.expect = chai.expect;
-      $(function() {
-        window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
-      })
-    </script>
 
-    <!-- source files -->
-    <script type="text/javascript" src="algorithms/wordSearch.js"></script>
-    <script type="text/javascript" src="algorithms/quicksort.js"></script>
-    <script type="text/javascript" src="algorithms/KMPSearchString.js"></script>
-    <script type="text/javascript" src="algorithms/deepEquality.js"></script>
-    <script type="text/javascript" src="algorithms/Letter-Combinations-of-a-Phone-Number.js"></script>
-    <script type="text/javascript" src="algorithms/generateParenthesis.js"></script>
-    <script type="text/javascript" src="algorithms/combinations.js"></script>
-    <script type="text/javascript" src="algorithms/reduce.js"></script>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="./lib/mocha/mocha.css" />
+  <script src="./lib/jquery/jquery.js"></script>
+  <script src="./lib/mocha/mocha.js"></script>
+  <script src="./lib/chai/chai.js"></script>
+  <script src="./lib/underscore/underscore.js"></script>
+  <script>
+    mocha.setup('bdd');
+    window.expect = chai.expect;
+    $(function() {
+      window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
+    })
+  </script>
 
-    <!-- spec files -->
-    <script type="text/javascript" src="spec/algorithm-spec/wordSearchSpec.js"></script>
-    <script type="text/javascript" src="spec/algorithm-spec/quicksortSpec.js"></script>
-    <script type="text/javascript" src="spec/algorithm-spec/KMPSearchStringSpec.js"></script>
-    <script type="text/javascript" src="spec/algorithm-spec/deepEqualitySpec.js"></script>
-    <script type="text/javascript" src="spec/algorithm-spec/Letter-Combinations-of-a-Phone-NumberSpec.js"></script>
-    <script type="text/javascript" src="spec/algorithm-spec/generateParenthesisSpec.js"></script>
-    <script type="text/javascript" src="spec/algorithm-spec/combinationsSpec.js"></script>
-    <script type="text/javascript" src="spec/algorithm-spec/reduceSpec.js"></script>
+  <!-- source files -->
+  <script type="text/javascript" src="algorithms/wordSearch.js"></script>
+  <script type="text/javascript" src="algorithms/quicksort.js"></script>
+  <script type="text/javascript" src="algorithms/KMPSearchString.js"></script>
+  <script type="text/javascript" src="algorithms/deepEquality.js"></script>
+  <script type="text/javascript" src="algorithms/Letter-Combinations-of-a-Phone-Number.js"></script>
+  <script type="text/javascript" src="algorithms/generateParenthesis.js"></script>
+  <script type="text/javascript" src="algorithms/combinations.js"></script>
+  <script type="text/javascript" src="algorithms/reduce.js"></script>
+  <script type="text/javascript" src="algorithms/comboSum.js"></script>
+
+  <!-- spec files -->
+  <script type="text/javascript" src="spec/algorithm-spec/wordSearchSpec.js"></script>
+  <script type="text/javascript" src="spec/algorithm-spec/quicksortSpec.js"></script>
+  <script type="text/javascript" src="spec/algorithm-spec/KMPSearchStringSpec.js"></script>
+  <script type="text/javascript" src="spec/algorithm-spec/deepEqualitySpec.js"></script>
+  <script type="text/javascript" src="spec/algorithm-spec/Letter-Combinations-of-a-Phone-NumberSpec.js"></script>
+  <script type="text/javascript" src="spec/algorithm-spec/generateParenthesisSpec.js"></script>
+  <script type="text/javascript" src="spec/algorithm-spec/combinationsSpec.js"></script>
+  <script type="text/javascript" src="spec/algorithm-spec/reduceSpec.js"></script>
+  <script type="text/javascript" src="spec/algorithm-spec/comboSumSpec.js"></script>
 
 
-  </head>
-  <body>
-    <div id="mocha"></div>
-  </body>
+</head>
+
+<body>
+  <div id="mocha"></div>
+</body>
+
 </html>
