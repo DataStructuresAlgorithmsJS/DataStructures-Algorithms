@@ -6,3 +6,5 @@ const quickSort = nums => {
   }
   return quickSort(left).concat(nums[0], quickSort(right));
 }
+
+// console.log(quickSort([4,1,4,2,6,1,7,3,6,1,6,4,8,53,73,3,1,83,42,84,32,52,75,2,73,42,64]))
