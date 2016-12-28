@@ -59,4 +59,12 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+  describe('DFS', ()=>{
+    it('should have a function named dfs', ()=>{
+      expect(graph.dfs).to.be.a('function');
+    });
+    it('should traverse graph in depth first order', ()=>{
+
+    });
+  });
 });
