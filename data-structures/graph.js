@@ -42,6 +42,21 @@ Graph.prototype.forEachNode = function(cb) {
   }
 };
 
+Graph.prototype.dfs = function(graph, visited, curNode, target) {
+  visited = visited || new Set();
+  if (curNode === target) {
+    return true;
+  }
+  visited.add(curNode);
+  for (let node of graph[curNode]) {
+    if (!visited.has(node)) {
+      if (dfs(graph, visited, node, target)) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
