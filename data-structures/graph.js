@@ -57,6 +57,24 @@ Graph.prototype.dfs = function(graph, visited, curNode, target) {
   }
   return false;
 };
+
+Graph.prototype.bfs = function(graph, target, curNode){
+  const set = new Set();
+  const queue = [curNode];
+  while(queue.length){
+    let cur = queue.shift();
+    for(let node of graph[cur]){
+      if(!set.has(node)){
+        if(node === target){
+          return true;
+        }
+        queue.push(node);
+        set.add(node)
+      }
+    }
+  }
+  return false;
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
