@@ -1,6 +1,6 @@
-const allAnagrams = (str, output = []) => {
-  str.length === 1 ? output = [...output, str] : [...str].forEach((val, i) =>
-    allAnagrams(str.substr(0, i)+str.substr(i+1))
-    .forEach(next => output = [...output, val+next]));
-  return [...new Set(output)];
+const allAnagrams = (str, sol = [])=> {
+  !str.length ? sol = ['']:
+  [...str].map((val, $) => allAnagrams(str.substr(0, $)+
+  str.substr($ + 1)).map(cur => sol=[...sol, val+cur]));
+  return [...new Set(sol)];
 }
