@@ -1,13 +1,13 @@
-export class MinStack {
+class MinStack {
   constructor() {
     this._stack = [];
   }
 
   push(value) {
-    let min = this.min();
+    let minVal = this.min();
     this._stack.push({
       value: value,
-      min: Math.min(min !== undefined ? min : Number.POSITIVE_INFINITY, value)
+      min: Math.min(minVal !== undefined ? minVal : Number.POSITIVE_INFINITY, value)
     });
   }
 
