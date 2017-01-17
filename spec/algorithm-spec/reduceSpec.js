@@ -6,12 +6,12 @@ describe("Reduce", ()=>{
 
   it('should set initial value of accumulator to the first value of the collection if nothing is passed in intially', ()=>{
     const add = (a,b) => a + b;
-    expect(reduce([1,2,3,4,5], add)).to.equal(15)
+    expect(reduce([1,2,3,4,5], add)).to.eql(15);
   });
 
   it('should return the sum of the values of an array', ()=>{
     const add = (a,b) => a + b;
-    expect(reduce([1,2,3], add, 0)).to.equal(6)
+    expect(reduce([1,2,3], add, 0)).to.eql(6)
   });
 
   it('should traverse the a tree and return the values that pass a filter test in depth first search order', ()=>{
