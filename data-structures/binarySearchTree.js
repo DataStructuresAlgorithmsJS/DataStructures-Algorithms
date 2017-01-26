@@ -6,7 +6,7 @@ var BinarySearchTree = function(value) {
   binaryTree.root = arguments[1] || false;
   return binaryTree;
 };
- 
+
 var bianryMethod = {
   insert: function(value){
     if(this.value > value){
@@ -66,6 +66,18 @@ var bianryMethod = {
       cb(cur.value)
     }
   },
+  ascendingTraversal: function(array = []){
+    if(this){
+      if(this.left){
+        this.left.ascendingTraversal(array);
+      }
+      array.push(this.value)
+      if(this.right){
+        this.right.ascendingTraversal(array);
+      }
+    }
+    return array;
+  },
   findHeight: function(){
     if(!this.left && !this.right){
       return -1;
@@ -105,18 +117,19 @@ var bianryMethod = {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
- // var binarySearchTree = BinarySearchTree(5);
+ var binarySearchTree = BinarySearchTree(5);
  // var arr = [];
  // var func = function(value){ arr.push(value); };
  // // binarySearchTree.insert(5);
  // binarySearchTree.insert(2);
  // // expect(binarySearchTree._left._value).to.eql(2);
  // // expect(binarySearchTree._right).to.eql(null);
- // binarySearchTree.insert(1);
- // binarySearchTree.insert(6);
- // binarySearchTree.insert(7);
- // binarySearchTree.insert(9);
- // binarySearchTree.insert(4);
- // binarySearchTree.insert(8);
+ binarySearchTree.insert(1);
+ binarySearchTree.insert(6);
+ binarySearchTree.insert(7);
+ binarySearchTree.insert(9);
+ binarySearchTree.insert(4);
+ binarySearchTree.insert(8);
  // binarySearchTree.breadthFirstLog(func);
  // console.log(arr)
+ // console.log(binarySearchTree.ascendingTraversal())
