@@ -50,7 +50,7 @@ Graph.prototype.dfs = function(graph, visited, curNode, target) {
   visited.add(curNode);
   for (let node of graph[curNode]) {
     if (!visited.has(node)) {
-      if (dfs(graph, visited, node, target)) {
+      if (this.dfs(graph, visited, node, target)) {
         return true;
       }
     }
